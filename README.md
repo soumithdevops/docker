@@ -100,4 +100,40 @@ and also
 	/etc/default/docker 
 	export http_proxy="http://XXX:YYY@proxy.net:8080/"
 	export https_proxy="http://XXX:YYY@proxy.net:8080/"
+	
+DOCKER CONTAINER LOGS :-
+--------------------------
+docker log -f <container-name>
+docker log -f --tail 1 <container-name>
+
+DOCKER INSPECT :-
+------------------
+docker inspect <container-name>
+OR for specific property
+	docker inspect --format {{<property>}} <container-name>
+	e.g. docker inspect --format {{.NetworkSettings.IPAddress}} <container-name>
+
+DOCKER STARTING AND STOPPING :-
+---------------------------------
+sudo service docker stop
+sudo service docker start
+sudo service docker restart
+	OR
+sudo kill $(pidof docker)
+sudo docker -d &
+
+DOCKER CONFIGURATION FILE :-
+------------------------------
+/etc/default/docker
+
+DOCKER DAEMON LOGGING :-
+-------------------------
+sudo docker -d --log-level=<LOG-LEVEL>
+LogFile :- /var/log/upstart/docker.log
+
+RUN PRIVATE DOCKER REGISTRY :-
+-------------------------------
+docker run -d -p 5000:5000 registry:2.0
+
+
 
