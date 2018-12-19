@@ -1,6 +1,4 @@
-FROM gautamborkar/ubuntu:14.04_1
-RUN apt-get -y update && apt-get -y install curl \
-				      vim
-CMD vi test
-ENTRYPOINT ["ping"]
-
+FROM python:3.6.1-alpine
+RUN pip install flask
+CMD ["python", "app.py"]
+COPY app.py /app.py
